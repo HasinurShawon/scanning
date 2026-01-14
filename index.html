@@ -1,11 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Downloading catalog…</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Downloading Catalog…</title>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MW6TMQ8S8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Track page load = QR scan
+    gtag('config', 'G-0MW6TMQ8S8');
+    gtag('event', 'qr_scan', {
+      event_category: 'QR',
+      event_label: 'IDC Campaign'
+    });
+  </script>
+
+  <!-- Fallback redirect in case JS is disabled -->
+  <meta http-equiv="refresh" content="2;url=https://idcbdplc.s3.us-east-1.amazonaws.com/IDCBDPLC/Rakibuzzaman's+CV.pdf">
 </head>
-<body>
-<script>
-  window.location.href = "https://idcbdplc.s3.us-east-1.amazonaws.com/IDCBDPLC/Rakibuzzaman's+CV.pdf";
-</script>
+<body style="font-family: sans-serif; text-align:center; padding-top:50px;">
+
+  <h2>Downloading catalog…</h2>
+  <p>If the download doesn’t start automatically, <a href="https://idcbdplc.s3.us-east-1.amazonaws.com/IDCBDPLC/Rakibuzzaman's+CV.pdf">tap here</a>.</p>
+
+  <script>
+    // Fire download redirect event before redirecting
+    setTimeout(function () {
+      gtag('event', 'download_redirect', {
+        event_category: 'Download',
+        event_label: "Rakibuzzaman's CV PDF"
+      });
+
+      // Redirect to S3 PDF
+      window.location.href = "https://idcbdplc.s3.us-east-1.amazonaws.com/IDCBDPLC/Rakibuzzaman's+CV.pdf";
+    }, 800); // 0.8s delay for GA4 to record
+  </script>
+
 </body>
 </html>
